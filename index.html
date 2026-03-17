@@ -88,8 +88,17 @@
       margin: 0 auto 16px;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .card h1 { font-size: 18px; font-weight: 600; color: #2c2c2a; margin-bottom: 8px; }
-    .card p { font-size: 14px; color: #888780; line-height: 1.6; }
+    .card h1 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #2c2c2a;
+      margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 14px;
+      color: #888780;
+      line-height: 1.6;
+    }
     .wa-badge {
       display: inline-flex;
       align-items: center;
@@ -138,7 +147,6 @@
   </div>
 
   <script>
-    const MENU_URL = "https://wa.me/p/26038407429077756/573168337157";
     const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbyWyMHUjc1qCBCTeV_vWjkalQ1PDaN0gmlA0DYgYqjKFCArxzAHcIW47kGlW2Go6zvf/exec";
 
     const k = new URLSearchParams(document.location.search).get("k");
@@ -147,11 +155,9 @@
       fetch(AS_URL_BASE + '?k=' + k)
         .then(r => r.text())
         .then(url => {
-          document.location.replace(url && url.startsWith('http') ? url : MENU_URL);
+          if (url) document.location.replace(url);
         })
-        .catch(() => document.location.replace(MENU_URL));
-    } else {
-      document.location.replace(MENU_URL);
+        .catch(err => console.error(err));
     }
   </script>
 </body>
