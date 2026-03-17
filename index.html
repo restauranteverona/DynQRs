@@ -1,76 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verona — Menú</title>
   <style>
-      body {
-        background-color: lightblue;
-        text-align: center;
-      }
-      
-      .lds-ring {
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
-}
-.lds-ring div {
-  box-sizing: border-box;
-  display: block;
-  position: absolute;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border: 8px solid #fff;
-  border-radius: 50%;
-  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #fff transparent transparent transparent;
-}
-.lds-ring div:nth-child(1) {
-  animation-delay: -0.45s;
-}
-.lds-ring div:nth-child(2) {
-  animation-delay: -0.3s;
-}
-.lds-ring div:nth-child(3) {
-  animation-delay: -0.15s;
-}
-@keyframes lds-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100dvh;
+      background: #F5EDDD;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      padding: 24px;
+    }
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 200px;
+      background: #C0111A;
+      clip-path: ellipse(60% 200px at 50% 0%);
+      z-index: 0;
+    }
+    .header-accent {
+      position: fixed;
+      top: 0; left: 0;
+      width: 160px; height: 140px;
+      background: #E8C228;
+      clip-path: ellipse(80px 140px at 0% 0%);
+      z-index: 0;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      max-width: 320px;
+      margin-top: 30px;
+    }
+    .logo-area { text-align: center; }
+    .logo-circle {
+      width: 84px;
+      height: 84px;
+      background: #fff;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+    }
+    .brand-name {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 26px;
+      font-weight: 700;
+      font-style: italic;
+      color: #fff;
+      letter-spacing: 1px;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+    }
+    .brand-tag {
+      color: rgba(255,255,255,0.82);
+      font-size: 13px;
+      font-style: italic;
+      margin-top: 2px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+      width: 100%;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid #F5EDDD;
+      border-top-color: #C0111A;
+      border-radius: 50%;
+      animation: spin 0.85s linear infinite;
+      margin: 0 auto 16px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .card h1 { font-size: 18px; font-weight: 600; color: #2c2c2a; margin-bottom: 8px; }
+    .card p { font-size: 14px; color: #888780; line-height: 1.6; }
+    .wa-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #25D366;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 22px;
+      border-radius: 24px;
+      margin-top: 18px;
+    }
+    .wa-dot {
+      width: 8px; height: 8px;
+      background: #fff;
+      border-radius: 50%;
+      animation: pulse 1.3s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.55; transform: scale(0.82); }
+    }
   </style>
 </head>
 <body>
-  <script>
-    const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbyWyMHUjc1qCBCTeV_vWjkalQ1PDaN0gmlA0DYgYqjKFCArxzAHcIW47kGlW2Go6zvf/exec";
-    
-    var url = document.location.href;
-    var k = url.substr(url.lastIndexOf("k=")+2);
-    
-    if(k){
-      fetch(AS_URL_BASE+'?k='+k)
-      .then(r => r.text())
-      .then((r) => {
-        console.log(r);
-        //document.write(r);
-        if(r){
-          document.location.replace(r);
-        }
-      })
-      .catch(err => console.log(err))
-    }
+  <div class="header"></div>
+  <div class="header-accent"></div>
 
+  <div class="content">
+    <div class="logo-area">
+      <div class="logo-circle">
+        <span style="font-size:44px;line-height:1;display:block;">🍕</span>
+      </div>
+      <div class="brand-name">Verona</div>
+      <div class="brand-tag">Sabor y sazón</div>
+    </div>
+    <div class="card">
+      <div class="spinner"></div>
+      <h1>¡Ya casi estás listo!</h1>
+      <p>Te llevamos directo a nuestro menú en WhatsApp</p>
+      <div class="wa-badge">
+        <div class="wa-dot"></div>
+        Abriendo menú
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const MENU_URL = "https://wa.me/p/26038407429077756/573168337157";
+    const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbyWyMHUjc1qCBCTeV_vWjkalQ1PDaN0gmlA0DYgYqjKFCArxzAHcIW47kGlW2Go6zvf/exec";
+
+    const k = new URLSearchParams(document.location.search).get("k");
+
+    if (k) {
+      fetch(AS_URL_BASE + '?k=' + k)
+        .then(r => r.text())
+        .then(url => {
+          document.location.replace(url && url.startsWith('http') ? url : MENU_URL);
+        })
+        .catch(() => document.location.replace(MENU_URL));
+    } else {
+      document.location.replace(MENU_URL);
+    }
   </script>
-  
-  <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-  
-  
 </body>
 </html>
